@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\MessagesController;
+use App\Http\Controllers\MascotaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,6 +31,7 @@ Route::get('/',['as' => 'home', function () {
 Route::get('/', [PagesController::class, 'home'])->name('home');
 Route::get('saludos/{nombre?}',  [PagesController::class, 'saludos'])->where('nombre', "[A-Za-z]+")->name('saludos');
 Route::resource('mensajes',MessagesController::class);
+Route::resource('mascotas', MascotaController::class)->except('show');
 //Route::resource('messages', MessagesController::class);
 /*Route::get('messages/create', [MessagesController::class, 'create'])->name('messages.create');
 Route::get('messages', [MessagesController::class, 'index'])->name('messages.index');
