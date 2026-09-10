@@ -15,16 +15,24 @@
 
 <table class="table table-striped">
     <thead>
-        <tr>
-            <th>Nombre</th>
-            <th>Especie</th>
-            <th>Sexo</th>
-            <th>Raza</th>
-            <th>Edad</th>
-            <th>Dueño</th>
-            <th>Acciones</th>
-        </tr>
-    </thead>
+    <tr>
+        <th>
+            <a href="{{ route('mascotas.index', ['orden' => 'nombre', 'direccion' => $direccion == 'asc' ? 'desc' : 'asc', 'buscar' => $busqueda]) }}" class="text-dark text-decoration-none">
+                Nombre {{ $orden == 'nombre' ? ($direccion == 'asc' ? '↑' : '↓') : '' }}
+            </a>
+        </th>
+        <th>Especie</th>
+        <th>Sexo</th>
+        <th>Raza</th>
+        <th>
+            <a href="{{ route('mascotas.index', ['orden' => 'edad', 'direccion' => $direccion == 'asc' ? 'desc' : 'asc', 'buscar' => $busqueda]) }}" class="text-dark text-decoration-none">
+                Edad {{ $orden == 'edad' ? ($direccion == 'asc' ? '↑' : '↓') : '' }}
+            </a>
+        </th>
+        <th>Dueño</th>
+        <th>Acciones</th>
+    </tr>
+</thead>
     <tbody id="tabla-mascotas">
         @include('mascotas._filas')
     </tbody>
